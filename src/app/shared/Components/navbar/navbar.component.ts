@@ -9,38 +9,38 @@ import { Router } from '@angular/router';
   templateUrl: './navbar.component.html',
   styleUrl: './navbar.component.css'
 })
-export class NavbarComponent implements OnInit{
-  isRegister : boolean = false
-  constructor(private _AuthenticationService : AuthenticationService,
-    private dialog : MatDialog,
-    private router : Router){}
-  
-  logout(){
+export class NavbarComponent implements OnInit {
+  isRegister: boolean = false
+  constructor(private _AuthenticationService: AuthenticationService,
+    private dialog: MatDialog,
+    private router: Router) { }
+
+  logout() {
     this.isRegister = false
     this._AuthenticationService.setPassword(false)
     localStorage.removeItem('isRegisterd')
     this.router.navigate(['/password'])
   }
-  logIn(){
+  logIn() {
     this.router.navigate(['/password'])
   }
   ngOnInit(): void {
     this._AuthenticationService.getPassword().subscribe(value => {
       this.isRegister = value
-      
+
     })
-    if(localStorage.getItem('isRegisterd')){
+    if (localStorage.getItem('isRegisterd')) {
       this.isRegister = JSON.parse(localStorage.getItem('isRegisterd')!)
-      
-    }else{
+
+    } else {
       localStorage.setItem('isRegisterd', JSON.stringify(false))
       this._AuthenticationService.getPassword().subscribe(value => {
         this.isRegister = value
-        
+
       })
     }
 
   }
 
-  
+
 }

@@ -18,10 +18,10 @@ export class CourseCardComponent implements OnInit {
   get index(): number {
     return this._index;
   }
-  Courses : Course [] = []
-  wishList : Course [] = []
-  CartList : Course [] = []
-  constructor(private _DashboardService : DashboardService){}
+  Courses: Course[] = []
+  wishList: Course[] = []
+  CartList: Course[] = []
+  constructor(private _DashboardService: DashboardService) { }
 
   ngOnInit() {
     this._DashboardService.getCourses().subscribe(value => {
@@ -29,90 +29,80 @@ export class CourseCardComponent implements OnInit {
     })
     this.IntilaizeWishAndCartList()
   }
-  
-  IntilaizeWishAndCartList(){ 
+
+  IntilaizeWishAndCartList() {
     const wishlist = localStorage.getItem('wishList')
     const carList = localStorage.getItem('cartList')
 
-    if(wishlist){
+    if (wishlist) {
       this.wishList = JSON.parse(wishlist)
-       this._DashboardService.setwishlist(this.wishList)
-        
-    }else{
-       this._DashboardService.getWishList().subscribe(value => {
+      this._DashboardService.setwishlist(this.wishList)
+
+    } else {
+      this._DashboardService.getWishList().subscribe(value => {
         this.wishList = value
       })
     }
 
-    if(carList){
-      this.CartList = JSON.parse(carList) 
+    if (carList) {
+      this.CartList = JSON.parse(carList)
       this._DashboardService.setCart(this.CartList)
-    }else{
+    } else {
       this._DashboardService.getCart().subscribe(value => {
         this.CartList = value
       })
     }
   }
   isCourseInWishlist(course: Course): boolean {
-    const isCourseInWishList = this.wishList.some(item =>item.id === course.id);
-    
+    const isCourseInWishList = this.wishList.some(item => item.id === course.id);
+
     return isCourseInWishList
   }
 
-  removeFirstLetter(price : string) :number  {
+  removeFirstLetter(price: string): number {
     if (typeof price !== 'string' || price.length === 0) {
-        // Check if the input is a non-empty string
-        return 0;
+      // Check if the input is a non-empty string
+      return 0;
     }
     return Number(price.substring(1));
   }
 
 
-  ValidPercentage(percentage : string){
+  ValidPercentage(percentage: string) {
     let discountPercentage = parseFloat(percentage.replace('%', ''));
-    
+
   }
 
-  TogglewishList(course : Course){
+  TogglewishList(course: Course) {
     const isCourseInWishList = this.wishList.some(item => item.id === course.id);
-    
-    if(isCourseInWishList){
-      console.log('j=hna');
-      
-      this.wishList = this.wishList.filter(item => item.id !== course.id  )
-      this._DashboardService.setwishlist(this.wishList)
-      
-    }else{
-      console.log(this.wishList);
-      
-      console.log('msh hna');
-      this.wishList.push(course)
 
-      console.log(this.wishList);
+    if (isCourseInWishList) {
+
+      this.wishList = this.wishList.filter(item => item.id !== course.id)
+      this._DashboardService.setwishlist(this.wishList)
+
+    } else {
+      this.wishList.push(course)
 
       this._DashboardService.setwishlist(this.wishList)
 
     }
   }
-  AddToCart(course : Course){
+  AddToCart(course: Course) {
     const isCourseInCartList = this.CartList.some(item => item.id === course.id);
-    console.log(isCourseInCartList);
-    
-    console.log(this.CartList);
-    
-    if(isCourseInCartList){
+
+
+    if (isCourseInCartList) {
       Swal.fire(`${course.courseName} Course Already in Yor Cart`);
-      console.log(`dd${this.CartList}`);
-      
-    }else{
-      
+
+    } else {
+
       this.CartList.push(course)
-      console.log(this.CartList);
-      
+
       this._DashboardService.setCart(this.CartList)
       Swal.fire(`${course.courseName} Course successfully added in the cart`);
-    } 
+    }
   }
-    
-  
+
+
 }

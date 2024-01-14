@@ -12,10 +12,10 @@ import { Router } from '@angular/router';
 export class CartWidgetComponent implements OnInit {
   displayedColumns: string[] = ['name', 'price'];
   @Output() childEvent = new EventEmitter<void>();
-  Courses : Course[] = []
+  Courses: Course[] = []
 
-  constructor(private _DashboardService : DashboardService,
-    private router : Router){}
+  constructor(private _DashboardService: DashboardService,
+    private router: Router) { }
   dataSource = new MatTableDataSource<Course>([]);
   ngOnInit(): void {
     this._DashboardService.getCart().subscribe(value => {
@@ -32,7 +32,7 @@ export class CartWidgetComponent implements OnInit {
   getTotalCost() {
     return this.Courses.map(t => t.priceAfterDiscount).reduce((acc, value) => acc + value, 0);
   }
-  navigateToChaeckout(){
+  navigateToChaeckout() {
     this.router.navigate(['/checkout'])
   }
 

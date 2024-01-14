@@ -1,18 +1,17 @@
 <section calss="d-flex">
     <div class="header">
-        <h2 class="text-center text-white pt-2" >Discover Latest Courses on Angular</h2>
+        <h2 class="text-center text-white pt-2">Discover Latest Courses on Angular</h2>
         <p class="text-center">
             <i class="fa fs-3 fa-solid fa-angle-down text-white"></i>
         </p>
-    </div>  
+    </div>
 </section>
 
 <section class="container">
     <div class="row mb-2">
         <div class="col-12">
-            <input type="text" [(ngModel)]="searchTerm"
-             placeholder="Search by Course Name, Author, Tag" 
-             class="form-control" (input)="updateFilteredCourses()">
+            <input type="text" [(ngModel)]="searchTerm" placeholder="Search by Course Name, Author, Tag"
+                class="form-control" (input)="updateFilteredCourses()">
         </div>
     </div>
 
@@ -20,24 +19,21 @@
         <mat-form-field appearance="outline" class="sort">
             <mat-label>Price</mat-label>
             <mat-select (selectionChange)="sortCourses($event)" class="sort">
-              <mat-option value=0>price - Low to High</mat-option>
-              <mat-option value=1>Price - High to Low</mat-option>
+                <mat-option value=0>price - Low to High</mat-option>
+                <mat-option value=1>Price - High to Low</mat-option>
             </mat-select>
-          </mat-form-field>
+        </mat-form-field>
     </section>
 
     <div class="row ">
-        <div *ngFor="let course of filteredCourses;let i = index" class="course col-lg-4 col-md-6 col-sm-12 mb-2" >
-            <app-course-card [data]="course" [index]="i" ></app-course-card>
+        <div *ngFor="let course of filteredCourses;let i = index" class="course col-lg-4 col-md-6 col-sm-12 mb-2">
+            <app-course-card [data]="course" [index]="i"></app-course-card>
         </div>
     </div>
-    <mat-paginator class="container" [length]="courses.length"
-     [pageSizeOptions]="pageSizeOptions"
-      aria-label="Select page"
-      [pageIndex]="pageIndex"
-      (page)="handlePageEvent($event)">
+    <mat-paginator class="container" [length]="courses.length" [pageSizeOptions]="pageSizeOptions"
+        aria-label="Select page" [pageIndex]="pageIndex" (page)="handlePageEvent($event)">
     </mat-paginator>
 
 </section>
 
-<app-cart-widget class="widget" [class.expand]="isCartExpanded" (childEvent)="ViewCart()" ></app-cart-widget>
+<app-cart-widget class="widget" [class.expand]="isCartExpanded" (childEvent)="ViewCart()"></app-cart-widget>

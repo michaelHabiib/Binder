@@ -1,16 +1,18 @@
 table {
-    width: 350px !important;
-    overflow-y: scroll;
-    margin-left: 0px !important;
-  }
-.setting{
-    position: absolute;
-    top: 4%;
-    transform: translateY(-50%);
-    left: -49px;
-    margin-left:0px;
-    transition: 1ms;
-  }
+  width: 350px !important;
+  overflow-y: scroll;
+  margin-left: 0px !important;
+}
+
+.setting {
+  position: absolute;
+  top: 4%;
+  transform: translateY(-50%);
+  left: -49px;
+  margin-left: 0px;
+  transition: 1ms;
+}
+
 tr.mat-mdc-footer-row td {
-    font-weight: bold;
-  }
+  font-weight: bold;
+}

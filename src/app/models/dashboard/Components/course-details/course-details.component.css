@@ -1,40 +1,50 @@
-.header{
+.header {
     margin: 25px auto 8px;
     background-color: #e96a5f;
     /* border-radius: 7px; */
 }
-.header i{
+
+.header i {
     cursor: pointer;
 }
-mat-icon.check{
+
+mat-icon.check {
     padding-top: 6px;
-    color: rgb(255, 213, 43);   
+    color: rgb(255, 213, 43);
 }
-iframe.image{
-    width: 400px ;
-    max-width: 400px ;
+
+iframe.image {
+    width: 400px;
+    max-width: 400px;
 }
-.video{
-    width: 400px ;
+
+.video {
+    width: 400px;
 }
-.text{
+
+.text {
     width: 600px !important;
 }
-.text h3{
+
+.text h3 {
     width: fit-content !important;
 }
+
 @media (max-width : 992px) {
-    .d-flex{
+    .d-flex {
         flex-direction: column;
     }
-    .d-flex .video{
+
+    .d-flex .video {
         width: 100% !important;
     }
-    iframe.image{
+
+    iframe.image {
         width: 100% !important;
         max-width: 100%;
     }
 }
-.font-weight{
+
+.font-weight {
     font-weight: 500;
 }

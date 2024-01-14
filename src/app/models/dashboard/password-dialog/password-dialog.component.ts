@@ -11,31 +11,31 @@ import { AuthenticationService } from '../../../Core/authentication/authenticati
 })
 export class PasswordDialogComponent {
 
-  hide : boolean = true
-  PasswordForm : FormGroup =  new FormGroup({
-    password : new FormControl('',Validators.required)
+  hide: boolean = true
+  PasswordForm: FormGroup = new FormGroup({
+    password: new FormControl('', Validators.required)
   })
   private ActualPassword = 'dummy@123'
-  isInvalidPassword : boolean = false
+  isInvalidPassword: boolean = false
 
-  constructor(private router : Router, private dialog : MatDialog,
-    private _AuthenticationService : AuthenticationService){}
+  constructor(private router: Router, private dialog: MatDialog,
+    private _AuthenticationService: AuthenticationService) { }
 
-  submit(){
-    if(this.PasswordForm.valid){
+  submit() {
+    if (this.PasswordForm.valid) {
       const EnteredPassword = this.PasswordForm.value.password
-      
-      
-      if(EnteredPassword == this.ActualPassword){
+
+
+      if (EnteredPassword == this.ActualPassword) {
         this.router.navigate(['/'])
         this._AuthenticationService.setPassword(true)
-        localStorage.setItem('isRegisterd',JSON.stringify(true))
+        localStorage.setItem('isRegisterd', JSON.stringify(true))
         this.dialog.closeAll()
-      }else{
+      } else {
         this.isInvalidPassword = true
-        localStorage.setItem('isRegisterd',JSON.stringify(false))
+        localStorage.setItem('isRegisterd', JSON.stringify(false))
         this._AuthenticationService.setPassword(false)
       }
-      }
+    }
   }
 }

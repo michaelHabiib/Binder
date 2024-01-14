@@ -9,15 +9,15 @@ import { PasswordDialogComponent } from './password-dialog/password-dialog.compo
 const routes: Routes = [
   {
     path: '',
-    redirectTo:'dashboard', pathMatch:'full',
+    redirectTo: 'dashboard', pathMatch: 'full',
   },
   {
-    path :'course/:id',
-    component:CourseDetailsComponent
+    path: 'course/:id',
+    component: CourseDetailsComponent
   },
   {
-    path :'dashboard',
-    component:DashboardComponent
+    path: 'dashboard',
+    component: DashboardComponent
   },
 ];
 

@@ -10,12 +10,12 @@ import Swal from 'sweetalert2';
 })
 export class CheckoutComponent implements OnInit {
 
-  Courses : Course[] = []
-  wishList : Course[] = []
-  dataSource  =  new MatTableDataSource<Course>([])
+  Courses: Course[] = []
+  wishList: Course[] = []
+  dataSource = new MatTableDataSource<Course>([])
   displayedColumns: string[] = ['name', 'author', 'price', 'saving', 'action'];
 
-  constructor(private _DashboardService : DashboardService){}
+  constructor(private _DashboardService: DashboardService) { }
   ngOnInit(): void {
     this._DashboardService.getCart().subscribe(value => {
       this.Courses = value
@@ -26,10 +26,10 @@ export class CheckoutComponent implements OnInit {
     })
   }
 
-  removeFirstLetter(price : string) :number  {
+  removeFirstLetter(price: string): number {
     if (typeof price !== 'string' || price.length === 0) {
-        // Check if the input is a non-empty string
-        return 0;
+      // Check if the input is a non-empty string
+      return 0;
     }
     return Number(price.substring(1));
   }
@@ -42,17 +42,17 @@ export class CheckoutComponent implements OnInit {
     return this.Courses.reduce((acc, course) => acc + (this.removeFirstLetter(course.actualPrice) - course.priceAfterDiscount), 0);;
   }
 
-  TogglewishList(course : Course){
+  TogglewishList(course: Course) {
     const isCourseInWishList = this.wishList.some(item => item.id === course.id);
-      
-    if(isCourseInWishList){
+
+    if (isCourseInWishList) {
 
       this.wishList = this.wishList.filter(item => item.id !== course.id)
-      
+
       this._DashboardService.setwishlist(this.wishList)
-      
-    }else{
-      this.Courses = this.Courses.filter( item => course.id !== item.id)
+
+    } else {
+      this.Courses = this.Courses.filter(item => course.id !== item.id)
       this._DashboardService.setCart(this.Courses)
       this.wishList.push(course)
       this._DashboardService.setwishlist(this.wishList)
@@ -61,23 +61,23 @@ export class CheckoutComponent implements OnInit {
   }
 
   isCourseInWishlist(course: Course): boolean {
-    const isCourseInWishList = this.wishList.some(item =>item.id === course.id);
-    
+    const isCourseInWishList = this.wishList.some(item => item.id === course.id);
+
     return isCourseInWishList
   }
-  removeFromCart(id : number){
-    this.Courses = this.Courses.filter( item => id !== item.id)
+  removeFromCart(id: number) {
+    this.Courses = this.Courses.filter(item => id !== item.id)
     this._DashboardService.setCart(this.Courses)
   }
 
-  checkout(){
+  checkout() {
     Swal.fire({
       text: "Please Confirm your Order",
     }).then((result) => {
       /* Read more about isConfirmed, isDenied below */
       if (result.isConfirmed) {
-          this.Courses = []
-          this._DashboardService.setCart(this.Courses)
+        this.Courses = []
+        this._DashboardService.setCart(this.Courses)
       } else if (result.isDenied) {
         Swal.close()
       }

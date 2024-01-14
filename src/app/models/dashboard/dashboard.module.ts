@@ -27,8 +27,8 @@ import { CourseDetailsComponent } from './Components/course-details/course-detai
     DashboardRoutingModule,
     HttpClientModule,
     FormsModule
-    
-    
+
+
   ]
 })
 export class DashboardModule { }

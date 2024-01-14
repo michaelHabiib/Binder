@@ -9,21 +9,21 @@ import { PasswordDialogComponent } from '../../models/dashboard/password-dialog/
   providedIn: 'root',
 })
 export class PasswordGuard implements CanActivate {
-  isRegister : boolean = false
+  isRegister: boolean = false
   constructor(private _AuthenticationService: AuthenticationService,
-              private router: Router, private dialog : MatDialog) {}
+    private router: Router, private dialog: MatDialog) { }
 
   canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean {
-  this._AuthenticationService.getPassword().subscribe(value => {
-    this.isRegister = value
-  })
-  
-  if(this.isRegister){
-    return true
-  }else{
-    this.router.navigate(['/password'])
-    return false
-  }
-            
+    this._AuthenticationService.getPassword().subscribe(value => {
+      this.isRegister = value
+    })
+
+    if (this.isRegister) {
+      return true
+    } else {
+      this.router.navigate(['/password'])
+      return false
+    }
+
   }
 }

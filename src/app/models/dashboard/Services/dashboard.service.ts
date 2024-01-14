@@ -9,8 +9,8 @@ import { CalculateDiscountService } from './calculate-discount.service';
 })
 export class DashboardService {
 
-  constructor(private http : HttpClient,
-    private _CalculateDiscountService : CalculateDiscountService) { }
+  constructor(private http: HttpClient,
+    private _CalculateDiscountService: CalculateDiscountService) { }
   private CoursesSubject = new BehaviorSubject<Course[]>([]); // Initial value is an empty string
   private WishListSubject = new BehaviorSubject<Course[]>([]); // Initial value is an empty string
   private CartSubject = new BehaviorSubject<Course[]>([]); // Initial value is an empty string
@@ -51,7 +51,7 @@ export class DashboardService {
     }
     return this.CartSubject.asObservable();
   }
-  GetCourses():Observable<Course[]>{
+  GetCourses(): Observable<Course[]> {
     return this.http.get<Course[]>('assets/Data/data.json');
   }
 
@@ -63,19 +63,19 @@ export class DashboardService {
       courseData['id'] = uniqueIdCounter++;
       Number(courseData.actualPrice)
       const price = this.removeFirstLetter(courseData.actualPrice)
-      const percaentage = this._CalculateDiscountService.calculateDiscountPercentage(courseData.discountPercentage) 
-      courseData['priceAfterDiscount'] = (price* (100 - percaentage))/ 100;
+      const percaentage = this._CalculateDiscountService.calculateDiscountPercentage(courseData.discountPercentage)
+      courseData['priceAfterDiscount'] = (price * (100 - percaentage)) / 100;
       return courseData;
     });
   }
-  
-removeFirstLetter(price : string) :number  {
-  if (typeof price !== 'string' || price.length === 0) {
+
+  removeFirstLetter(price: string): number {
+    if (typeof price !== 'string' || price.length === 0) {
       // Check if the input is a non-empty string
       return 0;
+    }
+    return Number(price.substring(1));
   }
-  return Number(price.substring(1));
-}
 
-  
+
 }
