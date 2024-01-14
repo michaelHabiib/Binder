@@ -1,0 +1,35 @@
+.header{
+    margin: 25px auto 8px;
+    background-color: #e96a5f;
+    /* border-radius: 7px; */
+}
+.header i{
+    cursor: pointer;
+}
+/* .course {
+    min-height: 130px !important;
+} */
+::ng-deep .mat-mdc-paginator {
+    margin: 25px auto 8px;
+    border-radius: 7px;
+    background-color: #e96a5f !important;
+    color: white !important;
+}   
+::ng-deep .mat-mdc-select-arrow {
+    color: white ;
+}
+/* ::ng-deep .mat-mdc-select {
+    color : white !important;
+} */
+::ng-deep .sort .mat-mdc-select-arrow{
+    color: black;
+}
+.widget{
+    position: fixed;
+    top: 43%;
+    right: -349px;
+    transition:  0.3s ease-in-out;}
+.expand{
+    right: 0;
+    transition:  0.3s ease-in-out;
+}

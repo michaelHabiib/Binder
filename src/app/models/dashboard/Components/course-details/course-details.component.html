@@ -1,0 +1,59 @@
+<section calss="d-flex">
+    <div class="header">
+        <h2 class="text-center text-white pt-2" >Discover Latest Courses on React’</h2>
+        <p class="text-center">
+            <i class="fa fs-3 fa-solid fa-angle-down text-white"></i>
+        </p>
+    </div>  
+</section>
+
+<section class="container">
+    <nav aria-label="breadcrumb ">
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item"><a routerLink="/courses">All Courses</a></li>
+          <li class="breadcrumb-item active" aria-current="page">{{course?.courseName}}</li>
+        </ol>
+    </nav>
+</section>
+
+<section class="container d-flex justify-content-between">
+    <div class="text">
+        <h3 class="fs-2" >
+            {{course?.courseName}}
+        </h3>
+        <h5 class="fs-5">
+           By {{course?.author}}
+        </h5>
+        <p class="font-weight">Course Goals :</p>
+
+        <ul>
+            <li *ngFor="let Goal of course?.tags" >
+                <mat-icon class="check" >check</mat-icon>
+                <span>{{Goal}}</span>
+            </li>
+        </ul>
+        <span class="fs-4" *ngIf="course?.discountPercentage == '0'">
+            <span class="text-gold" >₹</span>
+            {{removeFirstLetter(course?.actualPrice)}}
+        </span>
+        <span *ngIf="course?.discountPercentage !== '0'">
+            <del class="fs-5" > 
+                {{removeFirstLetter(course?.actualPrice)}}
+            </del>
+            <div class="d-block">
+                <span class="fs-3" >
+                    {{course?.priceAfterDiscount}}
+                </span>
+                <span class="text-gold" >₹</span>
+            </div>
+        </span>
+        <span>
+            <span class="font-weight">
+                Time Left :
+            </span> {{ _HandleTimeLeftService.calculateTimeLeft()}}
+        </span>
+    </div>
+    <div class="video">
+        <iframe class="image" width="560" height="315" src="https://www.youtube.com/embed/CWJOaCkuxxg?si=eViH3-cdyafWu7fW" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+    </div>
+</section>

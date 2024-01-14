@@ -1,0 +1,52 @@
+<nav class="navbar navbar-expand-lg navbar-dark ">
+    <div class="container">
+      <a class="navbar-brand text-white" routerLink="/">Coursera</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto me-5">
+          <li class="nav-item">
+            <a class="nav-link active me-3 text-white"
+            routerLink="courses" matTooltip="Courses"> 
+                <i class="fa fs-3 fa-solid fa-book"></i> 
+            </a>
+          </li>
+
+          <li class="nav-item" routerLink="cart">
+            <a class="nav-link me-3 text-white"
+             matTooltip="Cart" >
+            <i class="fa fs-3 fa-solid fa-cart-plus"></i>
+            </a>
+          </li>
+          <li class="nav-item" routerLink="wishlist">
+            <a class="nav-link me-3 text-white"
+             matTooltip="Wish list">
+                <i class="fa fs-3 fa-solid fa-heart"></i>  
+            </a>
+          </li>
+          <li class="nav-item" *ngIf="!isRegister" (click)="logIn()" >
+            <a class="nav-link me-3 text-white"
+                matTooltip="Log in">
+                <i class="fa fs-3 fa-solid fa-user"></i>
+            </a>
+          </li>
+          <li class="nav-item" *ngIf="isRegister" (click)="logout()">
+            <a class="nav-link me-3 text-white"
+                matTooltip="Log out">
+            <mat-icon class="fs-3">logout</mat-icon>
+            </a>
+          </li>
+
+          <li class="nav-item" *ngIf="isRegister" routerLink="profile">
+            <a class="nav-link me-3 text-white"
+                matTooltip="profile">
+            <img src="../../../../assets/images/1_PiHoomzwh9Plr9_GA26JcA.png" alt="">
+            </a>
+          </li>
+
+
+        </ul>
+      </div>
+    </div>
+  </nav>

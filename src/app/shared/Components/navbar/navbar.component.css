@@ -1,0 +1,14 @@
+nav{
+    background-color: #01595a;
+}
+nav i{
+    cursor: pointer;
+}
+nav img {
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+}
+a{
+    cursor: pointer;
+}

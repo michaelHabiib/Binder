@@ -1,0 +1,60 @@
+<section class="row">
+    <mat-accordion >
+        <mat-expansion-panel>
+          <mat-expansion-panel-header>
+            <mat-panel-title class="text-white" >
+              {{data.courseName}}
+            </mat-panel-title>
+            <mat-panel-description class="d-flex justify-content-end">
+                <div class="d-flex">
+                    <i matTooltip="Add To Wish List"
+                      class="fa fs-5 pt-2 fa-regular fa-heart"
+                      [class.clicked]="isCourseInWishlist(data)"
+                      (click)="TogglewishList(data)"></i> 
+                </div>
+            </mat-panel-description>
+          </mat-expansion-panel-header>
+          <div class="card">
+            <h3>Goals :</h3>
+                <ul>
+                    <li *ngFor="let Goal of data.tags"> 
+                    <span>
+                        <mat-icon class="check" >check</mat-icon>
+                    </span>
+                    <span class="goal" >
+                         {{Goal}}
+                    </span>
+                    </li>
+                </ul>
+            <span class="mt-1 mb-2 fs-4 " >By {{data.author}}</span>
+            <div class="d-flex justify-content-between align-items-center mt-3 ">
+
+                <span class="fs-4" *ngIf="data.discountPercentage == '0'">
+                    <span class="text-gold" >₹</span>
+                    {{removeFirstLetter(data.actualPrice)}}
+                </span>
+                <span *ngIf="data.discountPercentage !== '0'">
+                    <del class="fs-5" > 
+                        {{removeFirstLetter(data.actualPrice)}}
+                    </del>
+                    <div class="d-block">
+                        <span class="fs-3" >
+                            {{data.priceAfterDiscount}}
+                        </span>
+                        <span class="text-gold" >₹</span>
+                    </div>
+                </span>
+                <div class="d-flex">
+                    <mat-icon matTooltip="Add To Cart"
+                    (click)="AddToCart(data)" class="text-white add me-2">
+                    add
+                </mat-icon>
+                <mat-icon class="" matTooltip="Course Details" [routerLink]="['course',data.id]" >info</mat-icon>
+
+                </div>
+            </div>
+          </div>
+        </mat-expansion-panel>
+      </mat-accordion>
+      
+</section>

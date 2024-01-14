@@ -1,0 +1,49 @@
+.section-3{
+    width: 100%;
+    display: inline-flex;
+}
+
+.section-3 mat-form-field{
+    width:calc(98%/3);
+    flex-grow: 1 !important;
+    flex-basis: 1% !important;
+    flex-shrink: 1;
+
+}
+.section-2{
+    width: 100% !important;
+    min-width: 100% !important;
+    display: inline-flex;
+}
+.section-2.ex{
+    width: 100% !important;
+    min-width: 100% !important;
+    display: block;
+}
+.section-2 mat-form-field{
+    width: calc(98%/2) !important;
+    flex-grow: 1 !important;
+    flex-basis: 1% !important;
+    flex-shrink: 1; 
+}
+.fixed-height-textarea {
+    height: 100px; /* Set your desired fixed height */
+    max-height: 250px !important; /* Set your desired fixed height */
+}
+.profile-image{
+    max-width: 150px !important;
+}
+.text-area{
+    width: 100% !important;
+}
+@media (max-width : 767px) {
+    .section-2,.section-3{
+        display: block;
+    }
+    .d-flex{
+        flex-direction: column;
+    }
+    mat-form-field{
+        width: 100% !important;
+    }
+}

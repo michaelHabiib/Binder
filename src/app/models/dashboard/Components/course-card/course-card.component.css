@@ -1,0 +1,49 @@
+.mat-expansion-panel-header-title, .mat-expansion-panel-header-description {
+    flex-basis: auto !important;
+}
+::ng-deep mat-expansion-panel{
+    background-color: #01595a !important;
+}
+::ng-deep .mat-expansion-indicator::after{
+    color: white !important;
+}
+.card{
+    background-color: #01595a !important;
+    border: none;
+    padding: 5px 7px;
+    color: white;
+}
+mat-icon.add{
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    border: 1px solid white;
+    padding-left: 2px;
+    padding-top: 2px;
+    cursor: pointer;
+}
+mat-icon.check{
+    padding-top: 6px;
+    color: rgb(255, 213, 43);   
+}
+.text-gold{
+    font-size: 25px;
+    color: rgb(255, 213, 43);
+}
+.small-font {
+    font-size: 20px !important;
+}
+.fa-heart{
+    background-color: transparent   !important;
+    color: rgba(255, 255, 255, 0.51);
+}
+.fa-heart.clicked {
+    color: rgb(255, 213, 43);}
+.goal{
+    display: inline-block;
+    margin-left: 10px;
+}
+mat-icon{
+    cursor: pointer !important;
+}
+  

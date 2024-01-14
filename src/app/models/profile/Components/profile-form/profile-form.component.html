@@ -1,0 +1,85 @@
+<!-- profile.component.html -->
+
+<form [formGroup]="profileForm" (ngSubmit)="saveProfile()">
+    <div fxLayout="row" fxLayoutAlign="start center">
+      <mat-card>
+        <mat-card-title class="ms-2">My Profile</mat-card-title>
+        <mat-card-content>
+          <div fxLayout="row">
+            <div>
+              <img *ngIf="profileForm.get('profileImage')?.value" [src]="profileForm.get('profileImage')?.value" alt="Profile Image" class="profile-image" />
+              <input type="file" (change)="onFileChange($event)" accept="image/*" />
+            </div>
+            <div class="form-fields mt-2">
+                <div class="section-3">
+                    <mat-form-field appearance="outline" class="mx-1" >
+                        <input matInput placeholder="Display Name" formControlName="displayName" />
+                        <mat-error *ngIf="profileForm.get('displayName')?.hasError('required')">Display Name is required</mat-error>
+                      </mat-form-field>
+          
+                      <mat-form-field appearance="outline" class="mx-1">
+                        <input matInput placeholder="First Name" formControlName="firstName" />
+                        <mat-error *ngIf="profileForm.get('firstName')?.hasError('required')">First Name is required</mat-error>
+                      </mat-form-field>
+          
+                      <mat-form-field appearance="outline" class="mx-1">
+                        <input matInput placeholder="Last Name" formControlName="lastName" />
+                      </mat-form-field>        
+                </div>
+
+              <mat-form-field class="text-area" appearance="outline"  >
+                <textarea matInput placeholder="About Yourself" formControlName="about" maxlength="100" class="fixed-height-textarea"></textarea>
+              </mat-form-field>
+  
+              <div class="section-2">
+                <mat-form-field appearance="outline" class="mx-1">
+                    <mat-select placeholder="Area of Interest" formControlName="areaOfInterest" multiple>
+                      <mat-option *ngFor="let interest of interests" [value]="interest">{{ interest }}</mat-option>
+                    </mat-select>
+                  </mat-form-field>
+      
+                  <mat-form-field appearance="outline" class="mx-1">
+                    <mat-select placeholder="Student or Professional" formControlName="studentOrProfessional">
+                      <mat-option value="student">Student</mat-option>
+                      <mat-option value="professional">Professional</mat-option>
+                    </mat-select>
+                  </mat-form-field>
+              </div>
+
+              <div class="section-2 ex">
+                <div *ngIf="profileForm.get('studentOrProfessional')?.value === 'professional'" class="m-0 p-0">
+                    <mat-form-field appearance="outline" class="me-1">
+                      <mat-select placeholder="Experience" formControlName="experience">
+                        <mat-option value="0-5">0-5 years</mat-option>
+                        <mat-option value="5-10">5-10 years</mat-option>
+                        <mat-option value="10+">10 years and above</mat-option>
+                      </mat-select>
+                    </mat-form-field>
+      
+                    <mat-form-field appearance="outline" class="ms-1" >
+                        <mat-select placeholder="Expertise" formControlName="expertise">
+                            <mat-option value="Frontend">Frontend</mat-option>
+                            <mat-option value="Backend">Backend</mat-option>
+                          </mat-select>
+                    </mat-form-field>
+  
+                </div>
+              </div>
+  
+
+                <div class="d-block w-100">
+                <mat-form-field appearance="outline" class="text-area">
+                    <textarea matInput placeholder="Mention Your Role" formControlName="role" maxlength="200" class="fixed-height-textarea"></textarea>
+                  </mat-form-field>
+              </div>
+            </div>
+          </div>
+        </mat-card-content>
+  
+        <mat-card-actions class="d-flex justify-content-end">
+          <button class="btn btn-success" [disabled]="profileForm.invalid" type="submit">Save</button>
+        </mat-card-actions>
+      </mat-card>
+    </div>
+  </form>
+  

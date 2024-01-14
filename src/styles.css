@@ -1,1 +1,13 @@
 /* You can add global styles to this file, and also import other style files */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap');
+
+.fancyFont {
+    font-family: 'Montserrat';
+    font-weight: 500;
+  }
+
+html, body { height: 100%; }
+body { margin: 0; font-family: 'Montserrat', sans-serif; }
+ul,li{
+    list-style-type: none;
+}

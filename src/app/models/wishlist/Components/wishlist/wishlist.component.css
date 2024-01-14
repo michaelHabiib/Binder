@@ -1,0 +1,28 @@
+.table-header{
+    background-color: #e96a5f !important;
+    color: white;
+}
+.fa-heart.clicked {
+    color: rgb(255, 213, 43);}
+i{
+    cursor: pointer;
+}
+.example-container {
+    height: auto;
+    width: 100%;
+    max-width: 100%;
+    overflow: auto;
+  }
+  table {
+    width: 100% !important;
+  }
+  tr.mat-mdc-footer-row td {
+    font-weight: bold;
+  }
+  mat-icon.check{
+    padding-top: 6px;
+    color: rgb(255, 213, 43);   
+}
+.fa-cart-plus{
+    color: red  ;
+}

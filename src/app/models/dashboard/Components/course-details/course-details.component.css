@@ -1,0 +1,40 @@
+.header{
+    margin: 25px auto 8px;
+    background-color: #e96a5f;
+    /* border-radius: 7px; */
+}
+.header i{
+    cursor: pointer;
+}
+mat-icon.check{
+    padding-top: 6px;
+    color: rgb(255, 213, 43);   
+}
+iframe.image{
+    width: 400px ;
+    max-width: 400px ;
+}
+.video{
+    width: 400px ;
+}
+.text{
+    width: 600px !important;
+}
+.text h3{
+    width: fit-content !important;
+}
+@media (max-width : 992px) {
+    .d-flex{
+        flex-direction: column;
+    }
+    .d-flex .video{
+        width: 100% !important;
+    }
+    iframe.image{
+        width: 100% !important;
+        max-width: 100%;
+    }
+}
+.font-weight{
+    font-weight: 500;
+}
